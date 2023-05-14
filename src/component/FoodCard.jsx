@@ -4,7 +4,16 @@ const FoodCard = ({ food }) => {
     const { _id,name, quantity, supplier, teste, category, details, photo } = food;
 
     const handleDelete = id => {
-        console.log(id);
+        fetch(`http://localhost:5000/foods/${id}`,{
+            method:"DELETE"
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            if(data.deletedCount){
+                alert('Delete Success !!')
+            }
+        })
     }
 
     return (
