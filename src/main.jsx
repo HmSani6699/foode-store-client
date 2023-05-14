@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import AddFood from './component/AddFood.jsx';
 import Header from './component/Header.jsx';
+import UpdateFood from './component/UpdateFood.jsx';
 
 
 const router = createBrowserRouter([
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
       {
         path: '/addFood',
         element: <AddFood></AddFood>
+      },
+      {
+        path:'/updateFood/:id',
+        element:<UpdateFood></UpdateFood>,
+        loader:({params})=>fetch(`http://localhost:5000/foods/${params.id}`)
       }
     ]
   }
