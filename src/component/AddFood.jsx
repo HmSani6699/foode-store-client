@@ -14,9 +14,23 @@ const AddFood = () => {
         const details = from.details.value;
         const photo = from.photo.value;
 
-        const coffee = { name, quantity, supplier, teste, category, details, photo }
+        const newCoffee = { name, quantity, supplier, teste, category, details, photo }
 
-        console.log(coffee);
+        console.log(newCoffee);
+
+        // Send to tada in server site
+
+        fetch('http://localhost:5000/foods',{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(newCoffee)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+        })
 
     }
     return (
