@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 
-const FoodCard = ({ food }) => {
+const FoodCard = ({ food, foods, setFoods }) => {
     const { _id, name, quantity, supplier, teste, category, details, photo } = food;
 
     const handleDelete = id => {
@@ -13,6 +13,8 @@ const FoodCard = ({ food }) => {
                 console.log(data);
                 if (data.deletedCount) {
                     alert('Delete Success !!')
+                    const newfood = foods.filter(food => food._id !== id);
+                    setFoods(newfood)
                 }
             })
     }

@@ -1,10 +1,13 @@
 import { useLoaderData } from 'react-router-dom'
 import './App.css'
 import FoodCard from './component/FoodCard'
+import { useState } from 'react';
 
 function App() {
 
-  const foods = useLoaderData()
+  const LoaddedFoods = useLoaderData();
+
+  const [foods,setFoods] = useState(LoaddedFoods)
 
   return (
     <>
@@ -15,6 +18,8 @@ function App() {
           foods.map(food=><FoodCard
           key={food._id}
           food={food}
+          foods={foods}
+          setFoods={setFoods}
           ></FoodCard>)
         }
       </div>
