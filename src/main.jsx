@@ -9,16 +9,24 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import AddFood from './component/AddFood.jsx';
+import Header from './component/Header.jsx';
 
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App></App>,
-  },
-  {
-    path: '/addFood',
-    element: <AddFood></AddFood>
+    path: '/',
+    element: <Header></Header>,
+    children:[
+      {
+        path: "/home",
+        element: <App></App>,
+        loader: () => fetch('http://localhost:5000/foods')
+      },
+      {
+        path: '/addFood',
+        element: <AddFood></AddFood>
+      }
+    ]
   }
 ]);
 
